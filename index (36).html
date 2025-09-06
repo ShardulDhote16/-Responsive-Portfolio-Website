@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Portfolio</title>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; margin:0; padding:0; background:#f7f7f7; color:#222;}
+    header { background: #114488; color: #fff; padding: 1em 0;}
+    nav { display: flex; justify-content: space-between; align-items: center; max-width: 1150px; margin: 0 auto; padding: 0 1em;}
+    .logo { font-weight: bold; font-size: 1.7em;}
+    #nav-links { display: flex; list-style:none; margin:0; padding:0;}
+    #nav-links li { margin-left:2em;}
+    #nav-links a { color:#fff; text-decoration:none; transition: color 0.2s;}
+    #nav-links a:hover { color:#ff9933;}
+    .hamburger { display:none; font-size:2em; cursor:pointer;}
+    section { padding: 3em 1em; max-width:1150px; margin:0 auto; }
+    .services-list, .portfolio-list { display: flex; gap:2em; flex-wrap: wrap;}
+    .service-card, .portfolio-item { background: #fff; border-radius:8px; box-shadow:0 2px 8px #aaa; padding:1.5em; flex:1 1 30%;}
+    form { display:flex; flex-direction:column; gap:1em; max-width:400px;}
+    form input, form textarea { padding:0.8em; border-radius:5px; border:1px solid #ccc;}
+    form button { padding:0.8em; background:#114488; color:#fff; border:none; border-radius:5px; cursor:pointer; font-weight:bold;}
+    form button:hover { background:#0d355f;}
+    footer { background: #114488; color: #fff; text-align: center; padding: 1em;}
+    @media (max-width:800px) {
+      .services-list, .portfolio-list { flex-direction:column;}
+      nav { flex-direction:column; align-items:flex-start;}
+      #nav-links {
+        flex-direction:column; width:100%; display:none;
+        background:#114488; position:absolute; top:60px; left:0; padding:1em;
+      }
+      #nav-links.show { display:flex;}
+      #nav-links li { margin:1em 0;}
+      .hamburger { display:block;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Your Name</div>
+      <ul id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+    </nav>
+  </header>
+  <section id="home">
+    <h1>Welcome to My Portfolio</h1>
+    <p>Professional Frontend Developer</p>
+  </section>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Insert a short professional bio here. Highlight skills, education, and experience.</p>
+  </section>
+  <section id="services">
+    <h2>Services</h2>
+    <div class="services-list">
+      <div class="service-card">
+        <h3>Web Development</h3>
+        <p>Modern responsive websites using HTML, CSS, JS.</p>
+      </div>
+      <div class="service-card">
+        <h3>UI/UX Design</h3>
+        <p>Interactive user interfaces and optimal user experiences.</p>
+      </div>
+      <div class="service-card">
+        <h3>Consulting</h3>
+        <p>Front-end best practices and architecture advice.</p>
+      </div>
+    </div>
+  </section>
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="portfolio-list">
+      <div class="portfolio-item">
+        <h4>Project Title 1</h4>
+        <p>Short description and link.</p>
+      </div>
+      <div class="portfolio-item">
+        <h4>Project Title 2</h4>
+        <p>Short description and link.</p>
+      </div>
+    </div>
+  </section>
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form id="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <div id="form-message"></div>
+  </section>
+  <footer>
+    <p>&copy; 2025 Your Name. All rights reserved.</p>
+  </footer>
+  <script>
+    // Responsive nav
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+    // Simple contact form feedback
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('form-message').textContent = 'Message sent! Thank you for contacting.';
+      this.reset();
+      setTimeout(() => {
+        document.getElementById('form-message').textContent = '';
+      }, 4000);
+    });
+  </script>
+</body>
+</html>
